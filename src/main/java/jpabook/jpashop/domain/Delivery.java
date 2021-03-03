@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,11 +16,12 @@ public class Delivery {
     private Long id;
 
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Order order;
 
     @Embedded
     private Address address;
 
     @Enumerated(EnumType.STRING)
-    private DeliveryStatus status; //ENUM [READY(준비), COMP(배송)]
+    private DeliveryStatus deliveryStatus; //ENUM [READY(준비), COMP(배송)]
 }
