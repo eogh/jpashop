@@ -21,7 +21,7 @@ public class MemberService {
     //이 프록시 객체는 @Transactional이 포함된 메소드가 호출 될 경우,
     //PlatformTransactionManager를 사용하여 트랜잭션을 시작하고,
     //정상 여부에 따라 Commit 또는 Rollback 한다.
-//    @Transactional
+    @Transactional
     public Long join(Member member) {
 
         validateDuplicateMember(member);
@@ -52,7 +52,7 @@ public class MemberService {
         return memberRepository.findById(id).get();
     }
 
-//    @Transactional
+    @Transactional
     public void update(Long id, String name) {
         Member member = memberRepository.findById(id).get();
         member.setName(name);   //변경감지로 자동 업데이트
